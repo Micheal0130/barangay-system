@@ -1,0 +1,248 @@
+
+body {
+      font-family: Arial, sans-serif;
+      margin: 300px;
+      color: white;
+      background-image: -webkit-image-set("watermark6.jpg");
+    }
+style
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+      font-family: 'Courier New', monospace;
+
+    }
+
+    body {
+
+      background: #000;
+
+      color: #00ff00;
+
+      overflow-x: hidden;
+
+    }
+
+    header {
+
+      background: #111;
+
+      padding: 20px;
+
+      text-align: center;
+
+      border-bottom: 2px solid #00ff00;
+
+    }
+
+    header h1 {
+
+      font-size: 2.5rem;
+
+      text-shadow: 0 0 10px #00ff00;
+
+    }
+
+    nav a {
+
+      color: #00ff00;
+
+      margin: 0 15px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      transition: color 0.3s;
+
+    }
+
+    nav a:hover {
+
+      color: #fff;
+
+    }
+
+    .hero {
+
+      text-align: center;
+
+      padding: 100px 20px;
+
+    }
+
+    .typing {
+
+      font-size: 1.5rem;
+
+      border-right: 3px solid #00ff00;
+
+      display: inline-block;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+
+    }
+
+    @keyframes typing {
+
+      from { width: 0 }
+
+      to { width: 100% }
+
+    }
+
+    @keyframes blink {
+
+      from, to { border-color: transparent }
+
+      50% { border-color: #00ff00; }
+
+    }
+
+    .matrix-bg {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: black;
+
+      z-index: -1;
+
+      overflow: hidden;
+
+    }
+
+    canvas {
+
+      display: block;
+
+    }
+
+    section {
+
+      padding: 60px 20px;
+
+      max-width: 1000px;
+
+      margin: auto;
+
+    }
+
+    h2 {
+
+      text-align: center;
+
+      margin-bottom: 30px;
+
+      text-shadow: 0 0 10px #00ff00;
+
+    }
+
+    .card {
+
+      background: #111;
+
+      border: 1px solid #00ff00;
+
+      padding: 20px;
+
+      margin: 15px 0;
+
+      border-radius: 10px;
+
+      box-shadow: 0 0 15px #00ff00;
+
+    }
+
+    footer {
+
+      background: #111;
+
+      color: #00ff00;
+
+      text-align: center;
+
+      padding: 20px;
+
+      margin-top: 40px;
+
+      border-top: 2px solid #00ff00;
+
+    }
+    .hidden {
+      display: none;
+    }
+    input[type="text"], input[type="password"], input[type="number"] {
+      padding: 10px;
+      margin: 6px 0;
+      width: 95%;
+      border-radius: 20px;
+      border: 2px solid #00ffff;
+    }
+    button {
+      padding: 10px 60px;
+      margin: 10px;
+      cursor: pointer;
+      border: 2px;
+      background: #3498db;
+      color: white;
+      border-radius: 12px;
+    }
+    button:hover {
+      cursor: pointer;
+      background: #2980b9;
+    }
+    .container[id=posContainer] {
+      max-width: 250px;
+      justify-content: center;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 80px;
+      background: rgb(0, 61, 23);
+    }
+     .container {
+      max-width: 760px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 50px;
+      background: rgb(0, 61, 23);
+    }
+    table {
+      width: 100%;
+      border-radius: 50px;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ccc;;
+      text-align: center;
+      padding: 8px;
+      color: black;
+    }
+    th {
+      background: #f4f4f4;
+    }
+    .action-btns {
+      display: flex;
+      justify-content: right;
+      gap: 10px;
+    }
