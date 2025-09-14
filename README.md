@@ -2,6 +2,7 @@
   <title>Barangay Login & Profile</title>
    <link rel="stylesheet" href="higop.css">
    <script src="data.js"></script>
+   <script src="main.js" defer></script>
    
   <style>
     .hidden { display: none; }
