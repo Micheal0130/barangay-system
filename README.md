@@ -33,8 +33,8 @@
       margin-top: 20px;
     }
     th, td {
-      border: 100px solid #ccc;
-      padding: 5000px;
+      border: 1px solid #ccc;
+      padding: 50px;
       background: #fff;
     }
     th {
