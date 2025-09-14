@@ -42,7 +42,6 @@
       color: white;
     }
   </style>
-</head>
 <body>
 
 <!-- Welcome Section -->
