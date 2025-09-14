@@ -32,7 +32,7 @@
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 80px 90px;
+      padding: 8px;
       background: #ffffff;
     }
     th {
