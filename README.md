@@ -32,7 +32,7 @@
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 80px;
+      padding: 80px 90px;
       background: #ffffff;
     }
     th {
@@ -40,7 +40,6 @@
       color: white;
     }
   </style>
-</head>
 <body>
 
 <!-- Welcome Section -->
