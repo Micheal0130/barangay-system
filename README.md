@@ -34,7 +34,7 @@
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 100px;
+      padding: 500px;
       background: #fff;
     }
     th {
