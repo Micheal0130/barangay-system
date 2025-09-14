@@ -1,5 +1,4 @@
 
-<head>
   <meta charset="UTF-8">
   <title>Barangay Login & Profile</title>
    <link rel="stylesheet" href="higop.css">
