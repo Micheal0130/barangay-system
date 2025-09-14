@@ -27,7 +27,7 @@
       color: white;
       cursor: pointer;
     }
-    button:hover { background: #2980b9; }
+    button:hover { background: #cc00ff; }
     table {
       width: 100%;
       border-collapse: collapse;
