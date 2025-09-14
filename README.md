@@ -33,7 +33,7 @@
       margin-top: 20px;
     }
     th, td {
-      border: 1px solid #ccc;
+      border: 100px solid #ccc;
       padding: 5000px;
       background: #fff;
     }
