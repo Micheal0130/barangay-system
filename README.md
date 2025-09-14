@@ -1,10 +1,8 @@
-
-
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
   <title>Barangay Login & Profile</title>
    <link rel="stylesheet" href="higop.css">
    <script src="data.js"></script>
-
+   
   <style>
     .hidden { display: none; }
     .container {
@@ -13,7 +11,7 @@
       padding: 20px;
       border-radius: 10px;
       background: rgb(0, 61, 23);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(21, 255, 0, 0.2);
       text-align: center;
     }
     h1, h2 { color: #00ff00; }
@@ -22,7 +20,7 @@
       margin: 10px;
       border: none;
       border-radius: 5px;
-      background: #3498db;
+      background: #0059ff;
       color: white;
       cursor: pointer;
     }
@@ -34,14 +32,15 @@
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 50px;
-      background: #fff;
+      padding: 8px;
+      background: #ffffff;
     }
     th {
       background: #27ae60;
       color: white;
     }
   </style>
+</head>
 <body>
 
 <!-- Welcome Section -->
@@ -296,4 +295,5 @@
     }
   }
 </script>
+
 </body>
