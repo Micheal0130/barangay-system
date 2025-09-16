@@ -79,7 +79,7 @@
 
 <!-- Admin Section -->
 <div class="container hidden" id="adminContainer">
-  <h2>Barangay Residents Database</h2>
+  <h2>Katipunan ng Kabataan Database</h2>
   <button onclick="showAddForm()">➕ Add New Resident</button>
   <button onclick="logout()">🔙 Return</button>
 
