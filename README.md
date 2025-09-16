@@ -1,8 +1,8 @@
-<meta charset="UTF-8">
+
+  <meta charset="UTF-8">
   <title>Barangay Login & Profile</title>
    <link rel="stylesheet" href="higop.css">
-   <script src="data.js"></script>
-   <script src="main.js" defer></script>
+   <script src="data.php"></script>
    
   <style>
     .hidden { display: none; }
@@ -25,7 +25,7 @@
       color: white;
       cursor: pointer;
     }
-    button:hover { background: #cc00ff; }
+    button:hover { transform: scale(1.3); background: #cc00ff; }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -33,7 +33,7 @@
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 800px;
+      padding: 8px;
       background: #ffffff;
     }
     th {
@@ -69,7 +69,9 @@
   <label>Name:</label>
   <input type="text" id="resName">
   <label>Age:</label>
-  <input type="number" id="resAge">
+  <input type="number" id="resAge" disabled>
+  <label>Birthday:</label>
+  <input type="text" id="resBirthday">
   <label>Address:</label>
   <input type="text" id="resAddress">
   <button onclick="updateResident()">Update Profile</button>
@@ -79,7 +81,7 @@
 
 <!-- Admin Section -->
 <div class="container hidden" id="adminContainer">
-  <h2>Katipunan ng Kabataan Database</h2>
+  <h2>Barangay Residents Database</h2>
   <button onclick="showAddForm()">➕ Add New Resident</button>
   <button onclick="logout()">🔙 Return</button>
 
@@ -89,6 +91,7 @@
       <option value="id">ID</option>
       <option value="name">Name</option>
       <option value="age">Age</option>
+      <option value="birthday">Birthday</option>
       <option value="address">Address</option>
     </select>
     <input type="text" id="searchInput" placeholder="Enter search keyword">
@@ -107,6 +110,8 @@
     <input type="text" id="newName">
     <label>Age:</label>
     <input type="number" id="newAge">
+    <label>Birthday:</label>
+    <input type="date" id="newBirthday">
     <label>Address:</label>
     <input type="text" id="newAddress">
     <button onclick="addResident()">Add</button>
@@ -119,6 +124,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Age</th>
+        <th>Birthday</th>
         <th>Address</th>
         <th>Actions</th>
       </tr>
@@ -158,17 +164,30 @@
       document.getElementById("loginError").innerText = "Invalid username or password!";
     }
   }
-
-  function loadResidentProfile() {
-    const user = users[currentUser];
-    document.getElementById("resName").value = user.name;
-    document.getElementById("resAge").value = user.age;
-    document.getElementById("resAddress").value = user.address;
+  function calculateAge(birthdayStr) {
+  const today = new Date();
+  const birthDate = new Date(birthdayStr);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
   }
+  return age;
+}
+
+ function loadResidentProfile() {
+  const user = users[currentUser];
+  document.getElementById("resName").value = user.name;
+  document.getElementById("resBirthday").value = user.birthday;
+  document.getElementById("resAddress").value = user.address;
+  document.getElementById("resAge").value = calculateAge(user.birthday);
+}
+
 
   function updateResident() {
     users[currentUser].name = document.getElementById("resName").value;
     users[currentUser].age = document.getElementById("resAge").value;
+    users[currentUser].birthday = document.getElementById("resBirthday").value;
     users[currentUser].address = document.getElementById("resAddress").value;
     document.getElementById("resMessage").innerText = "Profile updated successfully!";
   }
@@ -193,9 +212,10 @@
     const password = document.getElementById("newPassword").value.trim();
     const name = document.getElementById("newName").value.trim();
     const age = document.getElementById("newAge").value.trim();
+    const birthday = document.getElementById("newBirthday").value.trim();
     const address = document.getElementById("newAddress").value.trim();
 
-    if (!username || !password || !name || !age || !address) {
+    if (!username || !password || !name || !age || !birthday || !address) {
       alert("Please fill all fields");
       return;
     }
@@ -204,7 +224,7 @@
       return;
     }
 
-    users[username] = { password, role: "resident", name, age, address };
+    users[username] = { password, role: "resident", name, age, birthday, address };
     loadAllProfiles();
 
     document.getElementById("addForm").classList.add("hidden");
@@ -212,6 +232,7 @@
     document.getElementById("newPassword").value = "";
     document.getElementById("newName").value = "";
     document.getElementById("newAge").value = "";
+    document.getElementById("newBirthday").value = "";
     document.getElementById("newAddress").value = "";
   }
 
@@ -225,9 +246,11 @@
   function updateResidentAdmin(username) {
     const name = document.getElementById(`name-${username}`).value;
     const age = document.getElementById(`age-${username}`).value;
+    const birthday = document.getElementById(`birthday-${username}`).value;
     const address = document.getElementById(`address-${username}`).value;
     users[username].name = name;
     users[username].age = age;
+    users[username].birthday = birthday;
     users[username].address = address;
     alert("Profile updated successfully!");
   }
@@ -242,7 +265,8 @@
           <tr>
             <td>${username}</td>
             <td><input type="text" id="name-${username}" value="${u.name}"></td>
-            <td><input type="number" id="age-${username}" value="${u.age}"></td>
+            <td><input type="number" id="age-${username}" value="${calculateAge(u.birthday)}" disabled></td>
+            <td><input type="text" id="birthday-${username}" value="${u.birthday}"></td>
             <td><input type="text" id="address-${username}" value="${u.address}"></td>
             <td>
               <button onclick="updateResidentAdmin('${username}')">Update</button>
@@ -270,7 +294,8 @@
 
       if (category === "id") valueToCheck = username.toLowerCase();
       if (category === "name") valueToCheck = user.name.toLowerCase();
-      if (category === "age") valueToCheck = String(user.age);
+      if (category === "age") valueToCheck = String(calculateAge(user.birthday));
+      if (category === "birthday") valueToCheck = String(user.birthday);
       if (category === "address") valueToCheck = user.address.toLowerCase();
 
       if (valueToCheck.includes(query)) {
@@ -280,6 +305,7 @@
             <td>${username}</td>
             <td><input type="text" id="name-${username}" value="${user.name}"></td>
             <td><input type="number" id="age-${username}" value="${user.age}"></td>
+            <td><input type="number" id="birthday-${username}" value="${user.birthday}"></td>
             <td><input type="text" id="address-${username}" value="${user.address}"></td>
             <td>
               <button onclick="updateResidentAdmin('${username}')">Update</button>
@@ -295,5 +321,4 @@
     }
   }
 </script>
-
 </body>
