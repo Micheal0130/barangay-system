@@ -135,7 +135,7 @@
 
 <script>
   const users = {
-    admin: { password: "1234", role: "admin" },
+    admin: { password: "utog", role: "admin" },
   };
 
   let currentUser = null;
